@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Phone, MessageCircle, Shield, Clock, Users, Star, MapPin, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
+import { Phone, Shield, Clock, Users, Star, MapPin, CheckCircle, ArrowRight, Menu, X } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Card, CardContent } from './components/ui/card';
 
@@ -25,6 +25,14 @@ import portaVidro2 from './assets/porta_vidro_2.jpg';
 import vidroTemperado1 from './assets/vidro_temperado_1.jpg';
 import vidroTemperado2 from './assets/vidro_temperado_2.jpg';
 import vidroJateado1 from './assets/vidro_jateado_1.jpg';
+import backgroundImage from './assets/background.jpg'; // Nova imagem de fundo
+
+// Ícone do WhatsApp (substituir por SVG ou componente)
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" className="inline-block">
+    <path d="M12.04 2C7.34 2 3.58 5.76 3.58 10.46c0 1.95.64 3.8 1.77 5.3L3 21.02l5.5-1.45c1.49.81 3.19 1.25 4.54 1.25 4.7 0 8.46-3.76 8.46-8.46S16.74 2 12.04 2zm.04 1.64c3.88 0 7.04 3.16 7.04 7.04 0 3.88-3.16 7.04-7.04 7.04-.98 0-1.95-.2-2.82-.57l-.66-.25-2.76.73.74-2.69-.27-.68c-.62-.93-.96-2.02-.96-3.17 0-3.88 3.16-7.04 7.04-7.04zm-2.88 4.68c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.35-.1.15-.2.3-.2.45s.05.3.14.45c.09.15.2.3.35.45.15.15.3.2.45.2s.3-.05.45-.14c.15-.09.3-.2.45-.35.15-.15.2-.3.2-.45s-.05-.3-.14-.45zm2.88 4.68c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.35-.1.15-.2.3-.2.45s.05.3.14.45c.09.15.2.3.35.45.15.15.3.2.45.2s.3-.05.45-.14c.15-.09.3-.2.45-.35.15-.15.2-.3.2-.45s-.05-.3-.14-.45zm2.88 4.68c-.2-.09-.4-.14-.6-.14-.2 0-.4.05-.6.14-.2.09-.4.2-.5.35-.1.15-.2.3-.2.45s.05.3.14.45c.09.15.2.3.35.45.15.15.3.2.45.2s.3-.05.45-.14c.15-.09.3-.2.45-.35.15-.15.2-.3.2-.45s-.05-.3-.14-.45z"/>
+  </svg>
+);
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -43,7 +51,7 @@ function App() {
 
   const whatsappNumber = "5511943844000";
   const whatsappMessage = "Olá! Gostaria de solicitar um orçamento para serviços de vidraçaria.";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
 
   const phoneNumber = "(11) 94384-4000";
 
@@ -177,7 +185,7 @@ function App() {
                 <span>{phoneNumber}</span>
               </a>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
-                <MessageCircle size={16} />
+                <WhatsAppIcon />
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -204,7 +212,7 @@ function App() {
                     <span>{phoneNumber}</span>
                   </a>
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
-                    <MessageCircle size={16} />
+                    <WhatsAppIcon />
                     <span>WhatsApp</span>
                   </a>
                 </div>
@@ -215,14 +223,15 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section id="inicio" className="hero-gradient text-white pt-20 pb-16">
-        <div className="container mx-auto px-4 py-16">
+      <section id="inicio" className="relative hero-section text-white pt-20 pb-16" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <div className="absolute inset-0 bg-black opacity-50"></div> {/* Overlay para escurecer a imagem */}
+        <div className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 fade-in">
               Vidraçaria Especializada em São Paulo
             </h1>
             <p className="text-xl md:text-2xl mb-8 fade-in">
-              Manutenção e conserto de vidros com qualidade e garantia. Atendimento em toda Grande São Paulo com equipe especializada e equipamentos modernos!
+              Manutenção e conserto de vidros com qualidade e garantia. Atendimento em toda Grande São Paulo.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
@@ -231,24 +240,9 @@ function App() {
                 <span>Ligar Agora: {phoneNumber}</span>
               </a>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors text-lg font-semibold">
-                <MessageCircle size={20} />
+                <WhatsAppIcon />
                 <span>WhatsApp</span>
               </a>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-center">
-              <div className="flex items-center space-x-2">
-                <Clock className="text-green-400" size={24} />
-                <span>Atendimento Rápido</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Shield className="text-green-400" size={24} />
-                <span>Garantia Total</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Users className="text-green-400" size={24} />
-                <span>Equipe Especializada</span>
-              </div>
             </div>
           </div>
         </div>
@@ -361,24 +355,25 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {areas.map((area, index) => (
               <Card key={index} className="p-6">
-                <div className="flex items-center space-x-3 mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 flex items-center space-x-2">
                   <MapPin className="text-blue-600" size={24} />
-                  <h3 className="text-xl font-bold text-gray-900">{area.zone}</h3>
-                </div>
-                <div className="space-y-2">
+                  <span>{area.zone}</span>
+                </h3>
+                <ul className="list-disc list-inside text-gray-600 space-y-1">
                   {area.neighborhoods.map((neighborhood, idx) => (
-                    <div key={idx} className="text-gray-600">{neighborhood}</div>
+                    <li key={idx}>{neighborhood}</li>
                   ))}
-                </div>
+                </ul>
               </Card>
             ))}
           </div>
 
-          <div className="text-center mt-8">
-            <p className="text-gray-600 mb-4">Não encontrou sua região? Entre em contato conosco!</p>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center space-x-2">
-              <span>Consultar Atendimento</span>
-              <ArrowRight size={16} />
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-700 mb-4">
+              Não encontrou sua região? Entre em contato conosco!
+            </p>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold">
+              Consultar Atendimento
             </a>
           </div>
         </div>
@@ -395,17 +390,11 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="text-yellow-400 fill-current" size={20} />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
-                <div>
-                  <div className="font-bold text-gray-900">{testimonial.name}</div>
-                  <div className="text-gray-500">{testimonial.location}</div>
-                </div>
+              <Card key={index} className="p-6 text-center">
+                <Star className="text-yellow-500 mx-auto mb-4" size={32} fill="currentColor" />
+                <p className="text-gray-700 italic mb-4">"{testimonial.text}"</p>
+                <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                <p className="text-sm text-gray-500">{testimonial.location}</p>
               </Card>
             ))}
           </div>
@@ -413,93 +402,70 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contato" className="py-16 bg-blue-900 text-white">
+      <section id="contato" className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Entre em Contato
             </h2>
-            <p className="text-xl">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Precisa de atendimento? Fale conosco agora mesmo!
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="text-white" size={32} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold mb-3">Ligue Agora</h3>
-              <p className="mb-4">Atendimento rápido e personalizado</p>
-              <a href={`tel:${phoneNumber}`} className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-block">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Ligue Agora</h3>
+              <p className="text-gray-600 mb-4">Atendimento rápido e personalizado</p>
+              <a href={`tel:${phoneNumber}`} className="text-blue-600 hover:underline text-lg font-semibold">
                 {phoneNumber}
               </a>
             </div>
 
-            <div className="text-center">
-              <div className="bg-white bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageCircle className="text-white" size={32} />
+            <div className="text-center p-6 bg-white rounded-lg shadow-md">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <WhatsAppIcon className="text-green-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold mb-3">WhatsApp</h3>
-              <p className="mb-4">Resposta rápida e atendimento personalizado</p>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors inline-block">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">WhatsApp</h3>
+              <p className="text-gray-600 mb-4">Resposta rápida e atendimento personalizado</p>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline text-lg font-semibold">
                 Enviar Mensagem
               </a>
             </div>
           </div>
 
           <div className="text-center mt-12">
-            <h3 className="text-2xl font-bold mb-4">Precisa de Atendimento?</h3>
-            <p className="text-xl mb-6">Não espere o problema piorar! Entre em contato e receba atendimento imediato.</p>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-colors text-lg font-semibold inline-flex items-center space-x-2">
-              <MessageCircle size={20} />
-              <span>Solicitar Orçamento Agora</span>
+            <p className="text-lg text-gray-700 mb-4">
+              Não espere o problema piorar! Entre em contato e receba atendimento imediato.
+            </p>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold">
+              Solicitar Orçamento Agora
             </a>
           </div>
         </div>
       </section>
 
+      {/* Floating WhatsApp Button */}
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-transform duration-300 ease-in-out transform hover:scale-110 z-50 animate-pulse">
+        <WhatsAppIcon size={32} />
+      </a>
+
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <img src={logoImg} alt="JR Manutenções" className="h-10 w-auto" />
-              <span className="text-xl font-bold">JR Manutenções</span>
-            </div>
-            <p className="text-gray-400 mb-4">
-              Especialistas em vidraçaria em São Paulo. Manutenção e conserto de vidros com qualidade e garantia.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href={`tel:${phoneNumber}`} className="text-gray-400 hover:text-white transition-colors">
-                {phoneNumber}
-              </a>
-              <span className="hidden sm:block text-gray-600">|</span>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                WhatsApp
-              </a>
-            </div>
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <p className="text-gray-500">
-                © 2024 JR Manutenções. Todos os direitos reservados.
-              </p>
-            </div>
-          </div>
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; 2025 JR Manutenções. Todos os direitos reservados.</p>
+          <p className="text-sm mt-2">
+            Desenvolvido com <span className="text-red-500">❤️</span> por Manus
+          </p>
         </div>
       </footer>
-
-      {/* WhatsApp Float Button */}
-      <a 
-        href={whatsappUrl} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="whatsapp-float bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
-      >
-        <MessageCircle size={24} />
-      </a>
     </div>
   );
 }
 
 export default App;
+
 

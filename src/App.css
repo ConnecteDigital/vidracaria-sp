@@ -120,14 +120,10 @@
 }
 
 /* Estilos customizados para JR Manutenções */
-.hero-gradient {
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-}
-
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .whatsapp-float {
@@ -177,3 +173,5 @@
 .scroll-smooth {
   scroll-behavior: smooth;
 }
+
+
