@@ -63,7 +63,7 @@ function App() {
       features: ["Reparo sem quebra", "Garantia de 90 dias", "Equipamentos modernos"]
     },
     {
-      title: "Sacadas de Vidro",
+      title: "Guarda corpo de vidro",
       description: "Instalação e manutenção de sacadas de vidro com máxima segurança e qualidade.",
       image: sacadaVidro1,
       features: ["Vidro temperado", "Instalação segura", "Design moderno"]
@@ -87,7 +87,7 @@ function App() {
       features: ["Corte preciso", "Qualidade superior", "Instalação profissional"]
     },
     {
-      title: "Vidros para Apartamento",
+      title: "Envidraçamento de Sacada",
       description: "Soluções completas em vidros para apartamentos e condomínios.",
       image: vidroApartamento1,
       features: ["Projeto completo", "Entrega rápida", "Pós-venda garantido"]
